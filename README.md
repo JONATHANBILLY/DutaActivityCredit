@@ -1,4 +1,4 @@
-# SAC Sahabat Coding 
+# Duta Activity Credit
 Aplikasi ini berguna untuk melakukan pencatatan dan pencetakkan form poin keaktifan mahasiswa
 
 Fitur yang ada : 
