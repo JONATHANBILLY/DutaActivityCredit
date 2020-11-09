@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -26,5 +28,12 @@
         <Button layoutY="169.0" mnemonicParsing="false" onAction="#tmbhmhs" prefHeight="59.0" prefWidth="200.0" styleClass="button-sidebar" stylesheets="@../styles/dashboardadmin.css" text="Tambah Mahasiswa" />
       </children>
     </Pane>
+      <TableView layoutX="322.0" layoutY="197.0" prefHeight="297.0" prefWidth="351.0">
+        <columns>
+          <TableColumn prefWidth="79.0" text="No" />
+          <TableColumn prefWidth="169.0" text="Nama" />
+            <TableColumn prefWidth="102.0" text="NIM" />
+        </columns>
+      </TableView>
   </children>
 </AnchorPane>
