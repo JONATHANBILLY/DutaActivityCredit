@@ -1,0 +1,17 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.button-sidebar{
+    -fx-background-color: aqua;
+    -fx-text-fill: black;
+}
+
+.button-sidebar:hover{
+    -fx-background-color: #fff;
+    -fx-text-fill: black;
+}
+
+#button-id{
+    -fx-border-color: #fff;
+}

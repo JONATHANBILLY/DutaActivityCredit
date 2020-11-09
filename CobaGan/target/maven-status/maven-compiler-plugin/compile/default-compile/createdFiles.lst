@@ -1,5 +1,5 @@
 com/mycompany/cobagan/DashboardUserController.class
 com/mycompany/cobagan/LoginController.class
-com/mycompany/cobagan/FXMLController.class
 com/mycompany/cobagan/MainApp.class
+com/mycompany/cobagan/DashboardAdminController.class
 com/mycompany/cobagan/DBUtil.class
