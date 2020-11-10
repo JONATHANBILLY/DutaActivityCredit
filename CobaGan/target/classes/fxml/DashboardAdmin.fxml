@@ -30,9 +30,8 @@
     </Pane>
       <TableView layoutX="322.0" layoutY="197.0" prefHeight="297.0" prefWidth="351.0">
         <columns>
-          <TableColumn prefWidth="79.0" text="No" />
-          <TableColumn prefWidth="169.0" text="Nama" />
-            <TableColumn prefWidth="102.0" text="NIM" />
+          <TableColumn fx:id="nama_mhs" prefWidth="182.0" text="Nama" />
+            <TableColumn fx:id="nim_mhs" prefWidth="168.0" text="NIM" />
         </columns>
       </TableView>
   </children>

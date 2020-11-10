@@ -63,7 +63,6 @@ public class LoginController implements Initializable {
             DBUtil.username = rs.getString("username");
             DBUtil.nama = rs.getString("nama");
             DBUtil.password = rs.getString("password");
-            DBUtil.nim = rs.getString("nim");
             DBUtil.role = rs.getInt("role");
             if (role == 1) {
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashboardAdmin.fxml"));
