@@ -10,10 +10,11 @@ package com.mycompany.cobagan;
  * @author billy
  */
 public class DashboardAdmin {
+    private String username;
     private String nama;
-    private int nim;
+    private String password;
     
-    public DashboardAdmin(String nama, int nim){
+    public DashboardAdmin(String username, String nama, String password){
         
     }
     
