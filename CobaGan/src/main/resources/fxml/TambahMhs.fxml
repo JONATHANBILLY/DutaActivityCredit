@@ -36,8 +36,9 @@
             </Pane>
             <TextField fx:id="username" layoutX="400.0" layoutY="226.0" promptText="username" />
             <TextField fx:id="nama" layoutX="400.0" layoutY="262.0" promptText="nama" />
-            <Button layoutX="450.0" layoutY="344.0" mnemonicParsing="false" onAction="#buttonTmbh" text="Tambah" />
+            <Button layoutX="445.0" layoutY="384.0" mnemonicParsing="false" onAction="#buttonTmbh" text="Tambah" />
             <PasswordField fx:id="password" layoutX="400.0" layoutY="295.0" promptText="password" />
+            <TextField fx:id="role" layoutX="402.0" layoutY="337.0" promptText="role(1 &amp; 2)" />
          </children>
       </AnchorPane>
    </children>

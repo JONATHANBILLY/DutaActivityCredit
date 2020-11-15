@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -36,6 +37,8 @@ public class TambahMhsController implements Initializable {
     private TextField nama;
     @FXML
     private TextField password;
+    @FXML
+    private TextField role;
 
     /**
      * Initializes the controller class.
@@ -70,24 +73,30 @@ public class TambahMhsController implements Initializable {
 
     }
 
+    private Connection conn = null;
+
     @FXML
     private void buttonTmbh(ActionEvent event) throws SQLException, IOException {
-        String username = this.username.getText();
-        String password = this.password.getText();
-        String nama = this.nama.getText();
-        String role;
-        role = "2";
-        
+        String user = username.getText();
+        String name = nama.getText();
+        String pass = password.getText();
+        String rol = role.getText();
+
         Connection con = DBUtil.connect();
         Statement stmt = con.createStatement();
-        System.out.println(username);
-        System.out.println(password);
-        System.out.println(nama);
-        String query = "INSERT INTO user VALUES ('" + username + "', '" + nama + "', '" + password + "', '" + role + "')";
+        System.out.println(user);
+        System.out.println(name);
+        System.out.println(pass);
+        System.out.println(rol);
+        String query = "INSERT INTO user VALUES ('" + user + "','" + name + "','" + pass + "','" + rol + "')";
         System.out.println(query);
+
         int rs = stmt.executeUpdate(query);
-        System.out.println("OK");
-        if (rs == 1 && password == username + ("UKDW")) {
+
+        System.out.println("ok");
+
+        if (rs == 1) {
+
             System.out.println("data masuk");
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Data Telah terupdate! ", ButtonType.YES);
             alert.showAndWait();
@@ -95,24 +104,29 @@ public class TambahMhsController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashboardAdmin.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add("/styles/dashboardadmin.css");
+            // scene.getStylesheets().add("/styles/Style.css");
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.show();
-        } else if (username.equals("") && password.equals("")) {
-            Alert alert_up = new Alert(Alert.AlertType.INFORMATION, "Masukan username dan password terlebih dahulu! ", ButtonType.YES);
-            alert_up.showAndWait();
-
-        } else if (username.equals("")) {
-            Alert alert_u = new Alert(Alert.AlertType.INFORMATION, "Masukan username terlebih dahulu! ", ButtonType.YES);
-            alert_u.showAndWait();
-
-        } else if (password.equals("")) {
-            Alert alert_p = new Alert(Alert.AlertType.INFORMATION, "Masukan password terlebih dahulu! ", ButtonType.YES);
-            alert_p.showAndWait();
-
         } else {
-            Alert alert_p = new Alert(Alert.AlertType.INFORMATION, "Coba Lagi", ButtonType.YES);
-            alert_p.showAndWait();
+            if (user.equals("") && (pass.equals(""))) {
+                Alert alert_up = new Alert(Alert.AlertType.INFORMATION, "Masukan username dan password terlebih dahulu! ", ButtonType.YES);
+                alert_up.showAndWait();
+
+            } else if (user.equals("")) {
+                Alert alert_u = new Alert(Alert.AlertType.INFORMATION, "Masukan username terlebih dahulu! ", ButtonType.YES);
+                alert_u.showAndWait();
+
+            } else if (pass.equals("")) {
+                Alert alert_p = new Alert(Alert.AlertType.INFORMATION, "Masukan password terlebih dahulu! ", ButtonType.YES);
+                alert_p.showAndWait();
+
+            } else {
+                Alert alert_unk = new Alert(Alert.AlertType.INFORMATION, "username atau password salah!", ButtonType.YES);
+                alert_unk.showAndWait();
+
+                System.out.println("tidak ada");
+            }
         }
     }
 }
