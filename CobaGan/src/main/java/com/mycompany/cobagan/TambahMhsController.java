@@ -77,7 +77,7 @@ public class TambahMhsController implements Initializable {
         String nama = this.nama.getText();
         String role;
         role = "2";
-
+        
         Connection con = DBUtil.connect();
         Statement stmt = con.createStatement();
         System.out.println(username);
@@ -85,10 +85,20 @@ public class TambahMhsController implements Initializable {
         System.out.println(nama);
         String query = "INSERT INTO user VALUES ('" + username + "', '" + nama + "', '" + password + "', '" + role + "')";
         System.out.println(query);
-
         int rs = stmt.executeUpdate(query);
         System.out.println("OK");
-        if (username.equals("") && (password.equals(""))) {
+        if (rs == 1 && password == username + ("UKDW")) {
+            System.out.println("data masuk");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Data Telah terupdate! ", ButtonType.YES);
+            alert.showAndWait();
+
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashboardAdmin.fxml"));
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("/styles/dashboardadmin.css");
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+        } else if (username.equals("") && password.equals("")) {
             Alert alert_up = new Alert(Alert.AlertType.INFORMATION, "Masukan username dan password terlebih dahulu! ", ButtonType.YES);
             alert_up.showAndWait();
 
@@ -100,22 +110,9 @@ public class TambahMhsController implements Initializable {
             Alert alert_p = new Alert(Alert.AlertType.INFORMATION, "Masukan password terlebih dahulu! ", ButtonType.YES);
             alert_p.showAndWait();
 
-        } else if (password != username + ("UKDW")) {
+        } else {
             Alert alert_p = new Alert(Alert.AlertType.INFORMATION, "Coba Lagi", ButtonType.YES);
             alert_p.showAndWait();
-        } else if(rs == 1){
-            System.out.println("data masuk");
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Data Telah terupdate! ", ButtonType.YES);
-            alert.showAndWait();
-
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashboardAdmin.fxml"));
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add("/styles/dashboardadmin.css");
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.show();
         }
     }
 }
-
-
