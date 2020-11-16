@@ -63,19 +63,18 @@ public class LoginController implements Initializable {
             DBUtil.username = rs.getString("username");
             DBUtil.nama = rs.getString("nama");
             DBUtil.password = rs.getString("password");
-            DBUtil.nim = rs.getString("nim");
             DBUtil.role = rs.getInt("role");
             if (role == 1) {
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashboardAdmin.fxml"));
                 Scene scene = new Scene(root);
-                scene.getStylesheets().add("/styles/Styles.css");
+                scene.getStylesheets().add("/styles/dashboardadmin.css");
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
             } else if(role == 2){
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/dashboardUser.fxml"));
                 Scene scene = new Scene(root);
-                scene.getStylesheets().add("/styles/Styles.css");
+                scene.getStylesheets().add("/styles/dashboardadmin.css");
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();

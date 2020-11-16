@@ -17,7 +17,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
         
-        stage.setTitle("CobaGan");
+        stage.setTitle("Duta Activity Credit");
         stage.setScene(scene);
         stage.show();
     }

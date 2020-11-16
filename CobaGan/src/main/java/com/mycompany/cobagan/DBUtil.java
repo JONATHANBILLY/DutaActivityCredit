@@ -33,7 +33,6 @@ public class DBUtil {
     public static String username;
     public static String nama;
     public static String password;
-    public static String nim;
     public static Integer role;
 
     public static Connection connect() {

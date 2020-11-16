@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="background" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.latihan.github1.DaftarisiController">
+   <children>
+      <Accordion prefHeight="400.0" prefWidth="600.0">
+        <panes>
+          <TitledPane animated="false" onMouseClicked="#showproyek" text="Nama Proyek">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="200.0" fitWidth="182.0" layoutX="208.0" layoutY="61.0">
+                           <image>
+                              <Image url="@logo.png" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" onMouseClicked="#showtim" text="Nama Tim">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="92.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sahabat Coding">
+                           <font>
+                              <Font size="52.0" />
+                           </font>
+                        </Text>
+                     </children></AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" onMouseClicked="#showanggota" text="Daftar Anggota Kelompok">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="210.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eka Yuliet Putri - 71160062" />
+                        <Text layoutX="186.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jonathan Billy Mintarja - 71170138" />
+                        <Text layoutX="212.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Galen Riandito - 71170211" />
+                     </children></AnchorPane>
+            </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+   </children>
+</AnchorPane>
