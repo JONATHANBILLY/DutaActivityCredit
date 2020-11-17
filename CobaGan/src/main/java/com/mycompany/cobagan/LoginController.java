@@ -72,7 +72,7 @@ public class LoginController implements Initializable {
                 window.setScene(scene);
                 window.show();
             } else if(role == 2){
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/dashboardUser.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashboardUser.fxml"));
                 Scene scene = new Scene(root);
                 scene.getStylesheets().add("/styles/dashboardadmin.css");
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
