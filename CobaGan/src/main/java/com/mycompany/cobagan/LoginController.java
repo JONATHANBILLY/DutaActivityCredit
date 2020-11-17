@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
- * @author reksy
+ * @author billy
  */
 public class LoginController implements Initializable {
 
