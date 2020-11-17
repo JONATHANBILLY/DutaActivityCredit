@@ -54,8 +54,13 @@ public class DashboardAdminController implements Initializable {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
+<<<<<<< HEAD
                 String user = rs.getString("username");
                 String name = rs.getString("nama");
+=======
+                String user = rs.getString(username);
+                String name = rs.getString(nama);
+>>>>>>> branch-1.0
                 dataMahasiswa.add(new DashboardAdmin(user, name));
             }
             tableMahasiswa.setItems(dataMahasiswa);
