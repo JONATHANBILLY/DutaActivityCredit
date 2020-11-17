@@ -28,7 +28,7 @@
         <Button layoutY="169.0" mnemonicParsing="false" onAction="#tmbhmhs" prefHeight="59.0" prefWidth="200.0" styleClass="button-sidebar" stylesheets="@../styles/dashboardadmin.css" text="Tambah Mahasiswa" />
       </children>
     </Pane>
-      <TableView layoutX="322.0" layoutY="197.0" prefHeight="297.0" prefWidth="351.0">
+      <TableView fx:id="tableMahasiswa" layoutX="322.0" layoutY="197.0" prefHeight="297.0" prefWidth="351.0">
         <columns>
           <TableColumn fx:id="nama_mhs" prefWidth="182.0" text="Nama" />
             <TableColumn fx:id="nim_mhs" prefWidth="168.0" text="NIM" />
