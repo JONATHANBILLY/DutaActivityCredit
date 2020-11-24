@@ -74,7 +74,7 @@ public class LoginController implements Initializable {
             } else if(role == 2){
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/dashboardUser.fxml"));
                 Scene scene = new Scene(root);
-                scene.getStylesheets().add("/styles/dashboardadmin.css");
+                scene.getStylesheets().add("/styles/dashboarduser.css");
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
