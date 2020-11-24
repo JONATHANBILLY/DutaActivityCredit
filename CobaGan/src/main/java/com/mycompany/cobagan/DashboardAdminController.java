@@ -56,24 +56,7 @@ public class DashboardAdminController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    private void loadData(){
-        try {
-            ObservableList<DashboardAdmin> dataMahasiswa = FXCollections.observableArrayList();
-            String sql = "SELECT * FROM user WHERE username ='"+DBUtil.username+"'";
-            Connection con = DBUtil.connect();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                String user = rs.getString("username");
-                String name = rs.getString("nama");
-                dataMahasiswa.add(new DashboardAdmin(user, name));
-            }
-            tableMahasiswa.setItems(dataMahasiswa);
-            con.close();
-        } catch (SQLException e) {
-            showMessageDialog(null, e.getMessage());
-        }
-}
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
