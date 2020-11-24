@@ -5,6 +5,16 @@
  */
 package com.mycompany.cobagan.Models;
 
+import com.mycompany.cobagan.DBUtil;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+
 /**
  *
  * @author eka
@@ -13,11 +23,13 @@ package com.mycompany.cobagan.Models;
 
 public class UserModel {
 
-    /**
-     * @return the nama
-     */
     private String nama;
     private String nim;
+    private Button update;
+    private Button delete;
+    
+    public UserModel(){
+    }
     
     public UserModel(String nama, String nim){
      this.nama = nama;
@@ -47,6 +59,68 @@ public class UserModel {
      */
     public void setNim(String nim) {
         this.nim = nim;
+    }
+    
+    /**
+     * @return the update
+     */
+    public Button getUpdate() {
+        return update;
+    }
+
+    /**
+     * @param update the update to set
+     */
+    public void setUpdate(Button update) {
+        this.update = update;
+        
+        update.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String query = "UPDATE user SET nama="+nama+" where username =" + nim;
+                System.out.println(query);
+                Connection con = DBUtil.connect();
+                Statement stmt = null;
+                try{
+                stmt = con.createStatement();
+                stmt.executeUpdate(query);
+                }
+                catch (SQLException ex)
+                {
+                }
+            }
+        });
+    }
+
+    /**
+     * @return the delete
+     */
+    public Button getDelete() {
+        return delete;
+    }
+
+    /**
+     * @param delete the delete to set
+     */
+    public void setDelete(Button delete) {
+        this.delete = delete;
+         delete.setOnAction(new EventHandler<ActionEvent>() {
+    
+            @Override
+            public void handle(ActionEvent event) {
+                String query = "DELETE FROM user where username =" + nim;
+                System.out.println(query);
+                Connection con = DBUtil.connect();
+                Statement stmt = null;
+                try{
+                stmt = con.createStatement();
+                stmt.executeUpdate(query);
+                }
+                catch (SQLException ex)
+                {
+                }
+            }
+        });
     }
     
 }

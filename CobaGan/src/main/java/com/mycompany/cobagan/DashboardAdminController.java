@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -44,6 +45,11 @@ public class DashboardAdminController implements Initializable {
     private TableColumn<UserModel, String> nama_mhs;
     @FXML
     private TableColumn<UserModel, String> nim_mhs;
+    @FXML
+    private TableColumn<UserModel, Button> col_update;
+
+    @FXML
+    private TableColumn<UserModel, Button> col_hapus;
 
     /**
      * Initializes the controller class.
@@ -66,12 +72,19 @@ public class DashboardAdminController implements Initializable {
             ResultSet rs = stmt.executeQuery(query);
             UserModel user = null;
             while(rs.next()){
-                user = new UserModel(rs.getString("nama"), rs.getString("username"));
+                System.out.println(rs.getString("username"));
+                user = new UserModel();
+                user.setNama(rs.getString("nama"));
+                user.setNim(rs.getString("username"));
+                user.setDelete(new Button("Hapus"));
+                user.setUpdate(new Button("Update"));
                 users.add(user);
             }
             System.out.println(users.size());
             nama_mhs.setCellValueFactory(new PropertyValueFactory("Nama"));
             nim_mhs.setCellValueFactory(new PropertyValueFactory("Nim"));
+            col_update.setCellValueFactory(new PropertyValueFactory("Update"));
+            col_hapus.setCellValueFactory(new PropertyValueFactory("Delete"));
            
             //nama_mhs.setCellFactory(TextFieldTableCell.forTableColumn());
             tabel_info.setItems(users);
