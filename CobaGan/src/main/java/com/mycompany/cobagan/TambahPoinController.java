@@ -33,8 +33,6 @@ import javafx.stage.Stage;
 public class TambahPoinController implements Initializable {
 
     @FXML
-    private TextField username;
-    @FXML
     private TextField jenis_kegiatan;
     @FXML
     private TextField nama_kegiatan;
@@ -43,6 +41,8 @@ public class TambahPoinController implements Initializable {
     
     @FXML
     public DatePicker tanggal;
+    
+    public static String initUsername;
 
     /**
      * Initializes the controller class.
@@ -50,14 +50,24 @@ public class TambahPoinController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        System.out.println("username in point: " + this.initUsername);
+    }
+    
+    public void getData(String id){
+        System.out.println("username in fc point: " + id);
+        this.initUsername=id;
     }
 
     @FXML
     private void lhtmhs(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashboardUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashboardUser.fxml"));
+        Parent root = loader.load();
+        DashboardUserController userController= loader.getController();
+        userController.getData(this.initUsername);
+        root = FXMLLoader.load(getClass().getResource("/fxml/dashboardUser.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/dashboardadmin.css");
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene.getStylesheets().add("/styles/dashboarduser.css");
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
     }
@@ -86,7 +96,7 @@ public class TambahPoinController implements Initializable {
 
     @FXML
     private void buttonTmbh(ActionEvent event) throws SQLException, IOException {
-        String user = username.getText();
+        String user = this.initUsername;
         String jk = jenis_kegiatan.getText();
         String nk = nama_kegiatan.getText();
         String jp = jml_poin.getText();
@@ -111,10 +121,14 @@ public class TambahPoinController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Data Telah terupdate! ", ButtonType.YES);
             alert.showAndWait();
 
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/dashboardUser.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashboardUser.fxml"));
+            Parent root = loader.load();
+            DashboardUserController userController= loader.getController();
+            userController.getData(this.initUsername);
+            root = FXMLLoader.load(getClass().getResource("/fxml/dashboardUser.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add("/styles/dashboarduser.css");
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.show();
         } else {

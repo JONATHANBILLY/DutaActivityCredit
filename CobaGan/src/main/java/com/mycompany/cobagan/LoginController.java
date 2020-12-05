@@ -71,13 +71,18 @@ public class LoginController implements Initializable {
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
-            } else if(role == 2){
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/dashboardUser.fxml"));
+            } else if(role == 2){               
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashboardUser.fxml"));
+                Parent root = loader.load();
+                DashboardUserController userController= loader.getController();
+                userController.getData(username);
+                root = FXMLLoader.load(getClass().getResource("/fxml/dashboardUser.fxml"));
                 Scene scene = new Scene(root);
                 scene.getStylesheets().add("/styles/dashboarduser.css");
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
+                
             } else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "User belum terdaftar", ButtonType.YES);
                 alert.showAndWait();

@@ -38,7 +38,6 @@
                   <Button layoutY="169.0" mnemonicParsing="false" onAction="#tmbhpoin" prefHeight="59.0" prefWidth="200.0" styleClass="button-sidebar" stylesheets="@../styles/dashboardadmin.css" text="Tambah Poin" />
                </children>
             </Pane>
-            <TextField fx:id="username" layoutX="400.0" layoutY="226.0" promptText="username" />
             <TextField fx:id="jenis_kegiatan" layoutX="400.0" layoutY="262.0" promptText="jenis_kegiatan" />
             <TextField fx:id="nama_kegiatan" layoutX="400.0" layoutY="262.0" promptText="nama_kegiatan" />
             <TextField fx:id="jml_poin" layoutX="400.0" layoutY="262.0" promptText="jml_poin" />
