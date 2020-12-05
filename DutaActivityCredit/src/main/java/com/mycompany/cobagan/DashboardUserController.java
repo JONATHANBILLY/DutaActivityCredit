@@ -26,6 +26,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -54,6 +55,13 @@ public class DashboardUserController implements Initializable {
     private TableColumn<PointModel, String> col_tanggal;
     
     public static String initUsername;
+    
+    @FXML
+    public DatePicker from;
+
+    @FXML
+    public DatePicker to;
+
     /**
      * Initializes the controller class.
      */
@@ -105,6 +113,67 @@ public class DashboardUserController implements Initializable {
     public void getData(String id){
         System.out.println("username in fc: " + id);
         this.initUsername=id;
+    }
+    
+    @FXML
+    private void search(ActionEvent event){
+        String dateDari = "";
+        String dateKe = "";
+        dateKe = convertDate(to.getValue().toString());
+        dateDari = convertDate(from.getValue().toString());
+        users = FXCollections.observableArrayList();
+        String query = "SELECT * FROM poinmhs where username='"+this.initUsername+"' AND tanggal between '"+dateDari+"' and '"+dateKe+"'";
+        System.out.println(query);
+        Connection con = DBUtil.connect();
+        Statement stmt = null;
+       
+        try {
+            stmt = con.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(DashboardUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            ResultSet rs = stmt.executeQuery(query);
+            PointModel user = null;
+            while(rs.next()){
+                System.out.println(rs.getString("username"));
+                user = new PointModel();
+                user.setUsername(rs.getString("username"));
+                user.setJenisKegiatan(rs.getString("jenis_kegiatan"));
+                user.setNamaKegiatan(rs.getString("nama_kegiatan"));
+                user.setJumlahPoint(rs.getInt("jml_poin"));
+                user.setTanggal(rs.getString("tanggal"));
+                
+                users.add(user);
+                System.out.println("Jenis Kegiatan model: "+ user.getJenisKegiatan());
+                System.out.println("Jenis Kegiatan db: "+ rs.getString("jenis_kegiatan"));
+            }
+            System.out.println(users.size());
+            col_username.setCellValueFactory(new PropertyValueFactory("Username"));
+            col_jenis_kegiatan.setCellValueFactory(new PropertyValueFactory("JenisKegiatan"));
+            col_nama_kegiatan.setCellValueFactory(new PropertyValueFactory("NamaKegiatan"));
+            col_jml_poin.setCellValueFactory(new PropertyValueFactory("JumlahPoint"));
+            col_tanggal.setCellValueFactory(new PropertyValueFactory("Tanggal"));
+           
+            //nama_mhs.setCellFactory(TextFieldTableCell.forTableColumn());
+            tabel_info.setItems(users);
+        } catch (SQLException ex) {
+            Logger.getLogger(DashboardUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    private String convertDate(String d) {
+        if (d.isEmpty()) {
+            return "0";
+        } else {
+
+            String[] date = d.split("-");
+            String year = date[0];
+            String month = date[1];
+            String day = date[2];
+
+            return year + "/" + month + "/" + day;
+        }
     }
 
     @FXML

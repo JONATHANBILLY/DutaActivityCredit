@@ -100,7 +100,7 @@ public class TambahPoinController implements Initializable {
         String jk = jenis_kegiatan.getText();
         String nk = nama_kegiatan.getText();
         String jp = jml_poin.getText();
-        String tgl = tanggal.getValue().toString();
+        String tgl = convertDate(tanggal.getValue().toString());
 
         Connection con = DBUtil.connect();
         Statement stmt = con.createStatement();
@@ -158,6 +158,19 @@ public class TambahPoinController implements Initializable {
 
                 System.out.println("tidak ada");
             }
+        }
+    }
+    private String convertDate(String d) {
+        if (d.isEmpty()) {
+            return "0";
+        } else {
+
+            String[] date = d.split("-");
+            String year = date[0];
+            String month = date[1];
+            String day = date[2];
+
+            return year + "/" + month + "/" + day;
         }
     }
 }
