@@ -66,7 +66,7 @@ public class DashboardUserController implements Initializable {
     private void tmbhpoin(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/TambahPoin.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/tambahmhs.css");
+        scene.getStylesheets().add("/styles/dashboardadmin.css");
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();

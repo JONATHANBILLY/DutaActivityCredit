@@ -69,8 +69,13 @@ public class TambahPoinController implements Initializable {
     }
 
     @FXML
-    private void tmbhpoin(ActionEvent event) {
-
+    private void tmbhpoin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/TambahPoin.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/styles/dashboardadmin.css");
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 
     private Connection conn = null;
@@ -120,15 +125,15 @@ public class TambahPoinController implements Initializable {
             } else if (jk.equals("")) {
                 Alert alert_p = new Alert(Alert.AlertType.INFORMATION, "Masukan jenis kegiatan terlebih dahulu! ", ButtonType.YES);
                 alert_p.showAndWait();
-             
+
             } else if (nk.equals("")) {
                 Alert alert_p = new Alert(Alert.AlertType.INFORMATION, "Masukan nama kegiatan terlebih dahulu! ", ButtonType.YES);
                 alert_p.showAndWait();
-            
+
             } else if (jp.equals("")) {
                 Alert alert_p = new Alert(Alert.AlertType.INFORMATION, "Masukan jumlah poin terlebih dahulu! ", ButtonType.YES);
                 alert_p.showAndWait();
-                
+
             } else {
                 Alert alert_unk = new Alert(Alert.AlertType.INFORMATION, "data salah!", ButtonType.YES);
                 alert_unk.showAndWait();

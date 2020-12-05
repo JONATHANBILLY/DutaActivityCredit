@@ -96,7 +96,6 @@ public class TambahMhsController implements Initializable {
         System.out.println("ok");
 
         if (rs == 1) {
-
             System.out.println("data masuk");
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Data Telah terupdate! ", ButtonType.YES);
             alert.showAndWait();
