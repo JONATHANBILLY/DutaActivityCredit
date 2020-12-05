@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -39,6 +40,9 @@ public class TambahPoinController implements Initializable {
     private TextField nama_kegiatan;
     @FXML
     private TextField jml_poin;
+    
+    @FXML
+    public DatePicker tanggal;
 
     /**
      * Initializes the controller class.
@@ -86,6 +90,7 @@ public class TambahPoinController implements Initializable {
         String jk = jenis_kegiatan.getText();
         String nk = nama_kegiatan.getText();
         String jp = jml_poin.getText();
+        String tgl = tanggal.getValue().toString();
 
         Connection con = DBUtil.connect();
         Statement stmt = con.createStatement();
@@ -93,7 +98,7 @@ public class TambahPoinController implements Initializable {
         System.out.println(jk);
         System.out.println(nk);
         System.out.println(jp);
-        String query = "INSERT INTO poinmhs VALUES ('" + user + "','" + jk + "','" + nk + "','" + jp + "')";
+        String query = "INSERT INTO poinmhs (username, jenis_kegiatan, nama_kegiatan, jml_poin, tanggal) VALUES ('" + user + "','" + jk + "','" + nk + "','" + jp + "','" + tgl + "')";
         System.out.println(query);
 
         int rs = stmt.executeUpdate(query);
@@ -106,10 +111,9 @@ public class TambahPoinController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Data Telah terupdate! ", ButtonType.YES);
             alert.showAndWait();
 
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashboarUser.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/dashboardUser.fxml"));
             Scene scene = new Scene(root);
-            scene.getStylesheets().add("/styles/dashboardadmin.css");
-            // scene.getStylesheets().add("/styles/Style.css");
+            scene.getStylesheets().add("/styles/dashboarduser.css");
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.show();
