@@ -41,5 +41,10 @@
             <TableColumn fx:id="col_tanggal" maxWidth="120.0" prefWidth="120.0" text="Tanggal" />
         </columns>
       </TableView>
+      <DatePicker fx:id="from" layoutX="246.0" layoutY="119.0" prefHeight="27.0" prefWidth="138.0" />
+      <Label layoutX="209.0" layoutY="124.0" text="From" />
+      <Label layoutX="400.0" layoutY="124.0" text="To" />
+      <DatePicker fx:id="to" layoutX="431.0" layoutY="119.0" prefHeight="27.0" prefWidth="138.0" />
+      <Button fx:id="btn_search" layoutX="585.0" layoutY="119.0" mnemonicParsing="false" onAction="#search" text="Search" />
   </children>
 </AnchorPane>
