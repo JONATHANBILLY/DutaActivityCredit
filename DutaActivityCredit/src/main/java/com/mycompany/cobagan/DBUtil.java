@@ -26,7 +26,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
- * @author reksy
+ * @author billy
  */
 public class DBUtil {
 
